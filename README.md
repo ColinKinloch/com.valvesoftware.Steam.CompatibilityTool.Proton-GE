@@ -13,6 +13,21 @@ First [add](https://flatpak.org/setup) Flathub repository and install Steam from
 flatpak install com.valvesoftware.Steam.CompatibilityTool.Proton-GE
 ```
 
+Recent vulkan extensions are required for Proton-GE to work properly. So install `mesa-git` by running
+```
+flatpak remote-add --user flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+flatpak install --user flathub-beta \
+    org.freedesktop.Platform.GL.mesa-git//21.08 \
+    org.freedesktop.Platform.GL32.mesa-git//21.08
+```
+
+And launch steam with
+```
+FLATPAK_GL_DRIVERS=mesa-git flatpak run com.valvesoftware.Steam
+```
+
+Or follow [the latest instructions from freedesktop](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/Mesa-git).
+
 ## Running
 
 Launch Steam flatpak and select "Proton GE (flatpak)" compatibility tool from drop-down list.
